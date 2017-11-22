@@ -4,14 +4,29 @@
 const path = require('path');
 
 module.exports = {
-    entry: './public/javascripts/login.js',
+    entry: {
+        main: './public/javascripts/main.js',
+        login: './public/javascripts/login.js'
+    },
     output: {
-        filename: 'bundle.js'
+        path: path.resolve(__dirname, "public/build"),
+        filename: "[name].bundle.js"
     },
     resolve: {
         modules: [
             "node_modules",
             path.resolve(__dirname, "public")
+        ]
+    },
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            }
         ]
     }
 };
