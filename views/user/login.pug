@@ -20,18 +20,7 @@ block content
                     a(href="/users/create") &nbsp;don't have an account?
 
             .uk-width-1-2 Hello World
-    script.
-        $(document).ready(function () {
-            $("button").click(function () {
-                $.post( "/users/login", $("form").serialize())
-                    .done(function () {
-                        window.location.replace("/");
-                    })
-                    .fail(function () {
-                        $("#error-label").attr("hidden", false);
-                    });
-            });
-        });
+    script(src="/javascripts/bundle.js")
 
 
 
