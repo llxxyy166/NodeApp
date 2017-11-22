@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+    .uk-margin
+    .uk-container.uk-container-center
+        .uk-grid
+            .uk-width-1-2
+                label.uk-text-danger#error-label(hidden) login failed
+                form.uk-form-stacked(method="POST")
+                    .uk-margin
+                        label.uk-form-label(for='email') Email
+                        .uk-form-controls
+                            input#email.uk-input(type='text', placeholder='xyx@abc.com', name="email")
+                    .uk-margin
+                        label.uk-form-label(for='password') Password
+                        .uk-form-controls
+                            input#password.uk-input(type='password', placeholder='', name="password")
+                    .uk-margin
+                    button.uk-button.uk-button-primary(type="button") SIGN IN
+                    a(href="/users/create") &nbsp;don't have an account?
+
+            .uk-width-1-2 Hello World
+    script.
+        $(document).ready(function () {
+            $("button").click(function () {
+                $.post( "/users/login", $("form").serialize())
+                    .done(function () {
+                        window.location.replace("/");
+                    })
+                    .fail(function () {
+                        $("#error-label").attr("hidden", false);
+                    });
+            });
+        });
+
+
+
