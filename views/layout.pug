@@ -23,13 +23,12 @@ html
                     li
                         a(href='#') Item
             .uk-navbar-right
-                ul.uk-navbar-nav
-                    li
+                ul.uk-navbar-nav.uk-iconnav
+                    li.uk-margin-large-right
                         if(user)
-                            p welcome #{user.email}
+                            a(href='#', uk-icon='icon: user')
                         else
                             a(href='/users/login') SIGN IN
-
 
         block content
 
